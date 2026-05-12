@@ -36,13 +36,37 @@ python3 -m http.server 8082
 | 4 | Click **Reset** to return to the start |
 | 5 | A chime plays when the timer reaches zero |
 
+## Docker
+
+The app is served from a lightweight `nginx` container. The provided `Dockerfile` copies `pomodoro.html` into `nginx` web root and exposes port `80`, so the container makes the timer available in your browser.
+
+```bash
+docker build -t pomodoro-timer .
+docker run --rm -p 8080:80 pomodoro-timer
+```
+
+Then open `http://localhost:8080/pomodoro.html` in your browser.
+
+## Playwright Tests
+
+Playwright is a browser automation framework for end-to-end testing. This repo uses Playwright to verify the Pomodoro timer in a real browser.
+
+Run the tests with:
+
+```bash
+npm test
+```
+
+For interactive debugging with the Playwright Test UI:
+
+```bash
+npm run test:ui
+```
+
+The `package.json` scripts are already configured to use `playwright test` and `playwright test --ui`.
+
 ## Tech Stack
 
 - **HTML5** — single self-contained file
 - **CSS3** — SVG ring animation, CSS custom properties, responsive layout
-- **Vanilla JavaScript** — Web Audio API for the completion chime, no frameworks or libraries
-
-## Deployment
-
-- **Docker** - container pomodoro-timer
-- **Playwright** - 27 functional tests 
+- **Vanilla JavaScript** — Web Audio API for the completion chime, no frameworks or libraries 
