@@ -1,0 +1,25 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "description": "A modern, single-file Pomodoro timer built with vanilla HTML, CSS, and JavaScript — no dependencies or build step required.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djellison/Pomodoro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/djellison/Pomodoro/issues"
+  },
+  "homepage": "https://github.com/djellison/Pomodoro#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
+}

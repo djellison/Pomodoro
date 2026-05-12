@@ -358,7 +358,8 @@
 
   minutesInput.addEventListener('change', () => {
     if (interval) return;
-    const mins = Math.max(1, Math.min(99, parseInt(minutesInput.value, 10) || 25));
+    const parsed = parseInt(minutesInput.value, 10);
+    const mins = Math.max(1, Math.min(99, isNaN(parsed) ? 25 : parsed));
     minutesInput.value = mins;
     total = mins * 60;
     remaining = total;
