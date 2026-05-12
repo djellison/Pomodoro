@@ -41,3 +41,8 @@ python3 -m http.server 8082
 - **HTML5** — single self-contained file
 - **CSS3** — SVG ring animation, CSS custom properties, responsive layout
 - **Vanilla JavaScript** — Web Audio API for the completion chime, no frameworks or libraries
+
+## Deployment
+
+- **Docker** - container pomodoro-timer
+- **Playwright** - 27 functional tests 
