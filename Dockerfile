@@ -7,6 +7,10 @@ FROM nginx:alpine
 RUN echo "@edge https://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
     && apk add --no-cache curl@edge libcurl@edge
 
+# Upgrade nghttp2-libs to 1.68.1+ to patch CVE-2026-27135
+# (DoS via assertion failure on malformed HTTP/2 frames, fixed in 1.68.1)
+RUN apk update && apk upgrade --no-cache nghttp2-libs
+
 # Remove the default nginx welcome page
 RUN rm -rf /usr/share/nginx/html/*
 
