@@ -16,6 +16,11 @@ RUN apk add --no-cache busybox@edge
 # (DoS via assertion failure on malformed HTTP/2 frames, fixed in 1.68.1)
 RUN apk update && apk upgrade --no-cache nghttp2-libs
 
+# Upgrade freetype to 2.14.2+ to patch CVE-2026-23865
+# (out-of-bounds read in font rendering, fixed in freetype 2.14.2)
+# Edge repo already registered above.
+RUN apk add --no-cache freetype@edge
+
 # Remove the default nginx welcome page
 RUN rm -rf /usr/share/nginx/html/*
 
