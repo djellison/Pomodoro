@@ -7,6 +7,11 @@ FROM nginx:alpine
 RUN echo "@edge https://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
     && apk add --no-cache curl@edge libcurl@edge
 
+# Upgrade busybox to 1.37.0-r31+ to patch CVE-2025-60876
+# (wget CR/LF injection in HTTP request-target, fixed in 1.37.0-r31)
+# Edge repo already registered above.
+RUN apk add --no-cache busybox@edge
+
 # Upgrade nghttp2-libs to 1.68.1+ to patch CVE-2026-27135
 # (DoS via assertion failure on malformed HTTP/2 frames, fixed in 1.68.1)
 RUN apk update && apk upgrade --no-cache nghttp2-libs
