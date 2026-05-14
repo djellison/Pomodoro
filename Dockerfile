@@ -21,6 +21,11 @@ RUN apk update && apk upgrade --no-cache nghttp2-libs
 # Edge repo already registered above.
 RUN apk add --no-cache freetype@edge
 
+# Upgrade xz-libs to 5.8.3 to patch CVE-2026-34743
+# (buffer overflow in lzma_index_decoder() on empty index, fixed in 5.8.3)
+# Available in the stable Alpine repo.
+RUN apk update && apk upgrade --no-cache xz-libs
+
 # Remove the default nginx welcome page
 RUN rm -rf /usr/share/nginx/html/*
 
